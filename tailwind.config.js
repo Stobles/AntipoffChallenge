@@ -5,6 +5,12 @@ export default {
     fontFamily: {
       roboto: ["Roboto", "sans-serif"],
     },
+    gridTemplateColumns: {
+      details: "2fr 1fr",
+    },
+    gridTemplateRows: {
+      details: "minmax(50px, 100px) 1fr",
+    },
     container: {
       center: true,
       padding: "2rem",
