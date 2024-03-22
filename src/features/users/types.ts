@@ -14,6 +14,13 @@ export type ResponseType = {
   data: User[];
 };
 
+export type ResponseUserIdType = {
+  data: User;
+  support: {
+    text: string;
+  };
+};
+
 export type QueryParams = {
   page?: number;
   per_page?: number;
