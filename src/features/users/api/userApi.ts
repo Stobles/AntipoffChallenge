@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { User, QueryParams, ResponseType } from "../types";
+import { User, QueryParams, ResponseType, ResponseUserIdType } from "../types";
 
 const generateQueryStr = (baseString: string, query: QueryParams): string => {
   const queryString: string =
@@ -25,7 +25,7 @@ export const userApi = createApi({
         return { url: queryStr };
       },
     }),
-    getUser: builder.query<User, Pick<User, "id">>({
+    getUser: builder.query<ResponseUserIdType, Pick<User, "id">>({
       query: ({ id }) => {
         return { url: `${id}` };
       },
@@ -33,4 +33,4 @@ export const userApi = createApi({
   }),
 });
 
-export const { useGetUsersQuery } = userApi;
+export const { useGetUsersQuery, useGetUserQuery } = userApi;
