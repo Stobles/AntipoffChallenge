@@ -14,11 +14,12 @@ const buttonVariants = cva(
         outline: "border border-input bg-transparent",
         "outline-invert":
           "border border-foreground bg-transparent text-primary-foreground",
+        ghost: "bg-accent/50 font-semibold text-primary hover:bg-accent p-1",
       },
       size: {
         default: "h-10 px-4",
         full: "w-full h-10 py-3 px-2",
-        icon: "h-5 w-5",
+        icon: "h-7 w-7",
       },
     },
     defaultVariants: {
