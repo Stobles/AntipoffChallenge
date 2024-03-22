@@ -3,9 +3,9 @@ import { Header } from "./Header";
 
 const MainLayout = () => {
   return (
-    <div>
+    <div className="h-full">
       <Header />
-      <main>
+      <main className="min-h-[100vh - 3rem]">
         <Outlet />
       </main>
     </div>
