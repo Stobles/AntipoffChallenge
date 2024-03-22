@@ -17,9 +17,12 @@ export const authSlice = createSlice({
     setUser(state, action: PayloadAction<Pick<AccountType, "token">>) {
       state.token = action.payload.token;
     },
+    deleteUser(state) {
+      state.token = "";
+    },
   },
 });
 
-export const { setUser } = authSlice.actions;
+export const { setUser, deleteUser } = authSlice.actions;
 
 export const authReducer = authSlice.reducer;

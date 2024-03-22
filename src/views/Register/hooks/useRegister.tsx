@@ -4,31 +4,40 @@ import { useDispatch } from "react-redux";
 import { toast } from "sonner";
 
 import {
-  UserLoginRequest,
-  UserAuthValidator,
+  UserRegisterRequest,
+  UserRegisterValidator,
 } from "../../../lib/validators/auth";
-import { useLoginMutation } from "../../../features/account/api/authApi";
+import { useRegisterMutation } from "../../../features/account/api/authApi";
 import { setUser } from "../../../features/account/slices/authSlice";
 import { useState } from "react";
 
-export const useLogin = () => {
+export const useRegister = () => {
   const dispatch = useDispatch();
-  const [loginUser, { isLoading }] = useLoginMutation();
+  const [registerUser, { isLoading }] = useRegisterMutation();
   const [customError, setCustomError] = useState("");
-  const form = useForm<Pick<UserLoginRequest, "email" | "password">>({
-    resolver: zodResolver(UserAuthValidator),
+  const form = useForm<UserRegisterRequest>({
+    resolver: zodResolver(UserRegisterValidator),
     defaultValues: {
+      username: "",
       email: "",
       password: "",
+      repeatPassword: "",
     },
   });
 
-  const onSubmit = ({ email, password }: UserLoginRequest) => {
+  const onSubmit = ({
+    email,
+    password,
+  }: Pick<UserRegisterRequest, "email" | "password">) => {
+    if (form.getValues("password") !== form.getValues("repeatPassword")) {
+      setCustomError("Пароли не совпадают.");
+      return;
+    }
     setCustomError("");
-    loginUser({ email, password })
+    registerUser({ email, password })
       .unwrap()
       .then(({ token }) => {
-        toast.success("Вы авторизовались");
+        toast.success("Вы зарегистрировались");
         const data = {
           token,
         };
@@ -37,7 +46,7 @@ export const useLogin = () => {
       })
       .catch((e) => {
         if (e.status === 400) {
-          toast.error("Пользователь не найден.");
+          toast.error("Выберите Email с сайта Reqres.in");
         }
       });
   };
