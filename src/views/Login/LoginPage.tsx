@@ -32,6 +32,7 @@ export const LoginPage = () => {
             </label>
             <Input
               className={`${errors.password && "border border-destructive"}`}
+              type="password"
               placeholder="******"
               {...register("password")}
             />

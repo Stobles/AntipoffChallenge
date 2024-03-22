@@ -49,6 +49,7 @@ export const RegisterPage = () => {
             <Input
               className={`${errors.password && "border border-destructive"}`}
               placeholder="******"
+              type="password"
               {...register("password")}
             />
             {errors.password && (
@@ -66,6 +67,7 @@ export const RegisterPage = () => {
               className={`${
                 errors.repeatPassword && "border border-destructive"
               }`}
+              type="password"
               placeholder="******"
               {...register("repeatPassword")}
             />

@@ -31,7 +31,7 @@ export const DetailsPage = () => {
             </div>
           </div>
 
-          <div className="w-full max-w-[1200px] mx-auto mt-6 text-lg grid grid-cols-details grid-rows-details">
+          <div className="w-full max-w-[1200px] mx-auto mt-6 text-lg flex flex-col-reverse px-2 md:grid grid-cols-details grid-rows-details">
             <div className="col-span-1 row-span-full">
               <p className="my-3 mt-0">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -60,7 +60,7 @@ export const DetailsPage = () => {
                 viverra suspendisse potenti nullam ac tortor vitae.
               </p>
             </div>
-            <div className="flex px-2 gap-2 col-span-1">
+            <div className="flex mb-4 md:mb-0 md:px-2 gap-2 col-span-1">
               <MailIcon />
               <a href={`mailto:${data.data?.email}`}>{data.data?.email}</a>
             </div>
