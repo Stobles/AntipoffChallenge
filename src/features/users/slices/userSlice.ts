@@ -30,9 +30,12 @@ export const FavoriteUsersSlice = createSlice({
         toast.success("Пользователь был добавлен в избранное");
       }
     },
+    clearFavorites(state) {
+      state.favorites = [];
+    },
   },
 });
 
-export const { toggleFavorite } = FavoriteUsersSlice.actions;
+export const { toggleFavorite, clearFavorites } = FavoriteUsersSlice.actions;
 
 export const userReducer = FavoriteUsersSlice.reducer;
