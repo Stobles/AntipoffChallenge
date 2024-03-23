@@ -8,15 +8,18 @@ import {
 import { mainRoutes, unAuthRoutes } from "./routes";
 import { NotFound } from "../views/NotFound";
 import UnAuthGuard from "./UnAuthGurad";
+import AuthGuard from "./AuthGuard";
 
 const AppRouter = () => {
   const AppRoutes = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/">
-        <Route element={<MainLayout />}>
-          {mainRoutes.map(({ path, Component }) => (
-            <Route key={path} path={path} element={<Component />} />
-          ))}
+        <Route element={<AuthGuard />}>
+          <Route element={<MainLayout />}>
+            {mainRoutes.map(({ path, Component }) => (
+              <Route key={path} path={path} element={<Component />} />
+            ))}
+          </Route>
         </Route>
         <Route element={<UnAuthGuard />}>
           {unAuthRoutes.map(({ path, Component }) => (
