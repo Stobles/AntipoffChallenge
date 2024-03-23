@@ -2,7 +2,7 @@ import * as React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 
 import { cn } from "../utils/cn";
-import { Loader } from "./Loader";
+import { LoaderCircle } from "lucide-react";
 
 const buttonVariants = cva(
   "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors disabled:pointer-events-none disabled:opacity-50",
@@ -17,7 +17,7 @@ const buttonVariants = cva(
         ghost: "bg-accent/50 font-semibold text-primary hover:bg-accent p-1",
       },
       size: {
-        default: "h-10 px-4",
+        default: "w-fit h-10 px-4",
         full: "w-full h-10 py-3 px-2",
         icon: "h-7 w-7",
       },
@@ -32,7 +32,6 @@ const buttonVariants = cva(
 interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {
-  asChild?: boolean;
   isLoading?: boolean;
 }
 
@@ -44,7 +43,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         ref={ref}
         {...props}
       >
-        {isLoading ? <Loader className="h-4 w-4" /> : children}
+        {isLoading ? <LoaderCircle className="h-4 w-4" /> : children}
       </button>
     );
   }
