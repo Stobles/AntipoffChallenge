@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import { toast } from "sonner";
-import { User } from "../types";
+import { User } from "@/features/types";
 
 export type favoritesState = {
   favorites: User[];

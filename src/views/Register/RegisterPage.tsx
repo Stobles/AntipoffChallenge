@@ -1,10 +1,15 @@
 import { Link } from "react-router-dom";
-import { Button } from "../../components/Button";
-import { Input } from "../../components/Input";
+import { Button } from "@/components/Button";
+import { Input } from "@/components/Input";
 import { useRegister } from "./hooks/useRegister";
+import { useState } from "react";
+import { EyeIcon, EyeOffIcon } from "lucide-react";
 
 export const RegisterPage = () => {
   const { register, errors, customError, handleSubmit } = useRegister();
+
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+  const [isRepeatPasswordVisible, setIsRepeatPasswordVisible] = useState(false);
   return (
     <div className="flex items-center justify-center w-full h-full">
       <div className="w-full max-w-[500px] min-h-[300px] shadow-popover rounded-md p-4">
@@ -46,12 +51,27 @@ export const RegisterPage = () => {
             <label className="text-base" htmlFor="password">
               Пароль
             </label>
-            <Input
-              className={`${errors.password && "border border-destructive"}`}
-              placeholder="******"
-              type="password"
-              {...register("password")}
-            />
+            <div className="relative">
+              <Input
+                className={`${errors.password && "border border-destructive"}`}
+                placeholder="******"
+                type={`${isPasswordVisible ? "text" : "password"}`}
+                {...register("password")}
+              />
+              <Button
+                className="absolute right-2 bottom-2 cursor-pointer"
+                variant="ghost"
+                size="icon"
+                onClick={() => setIsPasswordVisible((prev) => !prev)}
+                type="button"
+              >
+                {isPasswordVisible ? (
+                  <EyeOffIcon size={18} />
+                ) : (
+                  <EyeIcon size={18} />
+                )}
+              </Button>
+            </div>
             {errors.password && (
               <span className="text-xs text-destructive">
                 {errors.password.message}
@@ -63,14 +83,30 @@ export const RegisterPage = () => {
             <label className="text-base" htmlFor="repeatPassword">
               Подтвердите пароль
             </label>
-            <Input
-              className={`${
-                errors.repeatPassword && "border border-destructive"
-              }`}
-              type="password"
-              placeholder="******"
-              {...register("repeatPassword")}
-            />
+
+            <div className="relative">
+              <Input
+                className={`${
+                  errors.repeatPassword && "border border-destructive"
+                }`}
+                type={`${isRepeatPasswordVisible ? "text" : "password"}`}
+                placeholder="******"
+                {...register("repeatPassword")}
+              />
+              <Button
+                className="absolute right-2 bottom-2 cursor-pointer"
+                variant="ghost"
+                size="icon"
+                onClick={() => setIsRepeatPasswordVisible((prev) => !prev)}
+                type="button"
+              >
+                {isRepeatPasswordVisible ? (
+                  <EyeOffIcon size={18} />
+                ) : (
+                  <EyeIcon size={18} />
+                )}
+              </Button>
+            </div>
             {errors.repeatPassword && (
               <span className="text-xs text-destructive">
                 {errors.repeatPassword.message}

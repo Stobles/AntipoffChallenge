@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
-import { AccountType } from "../types";
+import { Account } from "@/features/types";
 
 export type authState = {
   token: string;
@@ -14,7 +14,7 @@ export const authSlice = createSlice({
   name: "auth_slice",
   initialState,
   reducers: {
-    setUser(state, action: PayloadAction<Pick<AccountType, "token">>) {
+    setUser(state, action: PayloadAction<Pick<Account, "token">>) {
       state.token = action.payload.token;
     },
     deleteUser(state) {

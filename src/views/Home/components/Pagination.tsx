@@ -1,5 +1,5 @@
 import { Dispatch } from "react";
-import { Button } from "../../../components/Button";
+import { Button } from "@/components/Button";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 export const Pagination = ({

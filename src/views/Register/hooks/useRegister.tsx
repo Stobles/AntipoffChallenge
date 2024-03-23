@@ -6,9 +6,9 @@ import { toast } from "sonner";
 import {
   UserRegisterRequest,
   UserRegisterValidator,
-} from "../../../lib/validators/auth";
-import { useRegisterMutation } from "../../../features/account/api/authApi";
-import { setUser } from "../../../features/account/slices/authSlice";
+} from "@/lib/validators/auth";
+import { useRegisterMutation } from "@/features/account/api/authApi";
+import { setUser } from "@/features/account/slices/authSlice";
 import { useState } from "react";
 
 export const useRegister = () => {
@@ -52,7 +52,6 @@ export const useRegister = () => {
   };
 
   return {
-    form,
     register: form.register,
     errors: form.formState.errors,
     customError,

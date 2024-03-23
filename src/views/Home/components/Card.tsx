@@ -1,10 +1,10 @@
 import { HeartIcon, HeartOffIcon } from "lucide-react";
-import { Button } from "../../../components/Button";
+import { Button } from "@/components/Button";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../../../app/store";
-import { toggleFavorite } from "../../../features/users/slices/userSlice";
-import { User } from "../../../features/users/types";
+import { RootState } from "@/app/store";
+import { toggleFavorite } from "@/features/users/slices/userSlice";
+import { User } from "@/features/types";
 
 export const Card = ({ user }: { user: User }) => {
   const { favorites } = useSelector(

@@ -1,8 +1,8 @@
 import { useLocation, useNavigate } from "react-router-dom";
-import { Button } from "../../../components/Button";
+import { Button } from "@/components/Button";
 import { useSelector } from "react-redux";
-import { RootState } from "../../../app/store";
-import { LogoutButton } from "../../../features/account/ui/Logout";
+import { RootState } from "@/app/store";
+import { LogoutButton } from "@/features/account/ui/Logout";
 import { useMediaQuery } from "@uidotdev/usehooks";
 import { ChevronLeft } from "lucide-react";
 

@@ -1,5 +1,12 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { User, QueryParams, ResponseType, ResponseUserIdType } from "../types";
+import {
+  User,
+  QueryParams,
+  ResponseType,
+  ResponseUserIdType,
+  ResponseAvatarPatch,
+  PatchParams,
+} from "@/features/types";
 
 const generateQueryStr = (baseString: string, query: QueryParams): string => {
   const queryString: string =
@@ -30,7 +37,18 @@ export const userApi = createApi({
         return { url: `${id}` };
       },
     }),
+    patchUser: builder.mutation<ResponseAvatarPatch, PatchParams>({
+      query: ({ id, ...body }) => {
+        console.log(body);
+        return {
+          url: `${id}`,
+          method: "PATCH",
+          body,
+        };
+      },
+    }),
   }),
 });
 
-export const { useGetUsersQuery, useGetUserQuery } = userApi;
+export const { useGetUsersQuery, useGetUserQuery, usePatchUserMutation } =
+  userApi;

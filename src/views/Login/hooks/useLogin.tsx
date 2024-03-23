@@ -3,13 +3,11 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useDispatch } from "react-redux";
 import { toast } from "sonner";
 
-import {
-  UserLoginRequest,
-  UserAuthValidator,
-} from "../../../lib/validators/auth";
-import { useLoginMutation } from "../../../features/account/api/authApi";
-import { setUser } from "../../../features/account/slices/authSlice";
+import { UserLoginRequest, UserAuthValidator } from "@/lib/validators/auth";
+import { useLoginMutation } from "@/features/account/api/authApi";
+import { setUser } from "@/features/account/slices/authSlice";
 import { useState } from "react";
+import { clearFavorites } from "@/features/users/slices/userSlice";
 
 export const useLogin = () => {
   const dispatch = useDispatch();
@@ -40,10 +38,10 @@ export const useLogin = () => {
           toast.error("Пользователь не найден.");
         }
       });
+    dispatch(clearFavorites());
   };
 
   return {
-    form,
     register: form.register,
     errors: form.formState.errors,
     customError,
